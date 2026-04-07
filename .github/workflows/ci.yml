@@ -36,6 +36,9 @@ jobs:
           ruby-version: 3.2.3
           bundler-cache: true
 
+      - name: Create database.yml
+        run: cp config/database.yml.example config/database.yml
+
       - name: Setup database
         run: bin/rails db:schema:load
 
