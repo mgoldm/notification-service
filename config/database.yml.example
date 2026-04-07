@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  pool: 30
+  timeout: 5000
+  username: <%= ENV.fetch('MYSQL_USER', 'root') %>
+  password: <%= ENV.fetch('MYSQL_PASS', '') %>
+  host: <%= ENV.fetch('MYSQL_HOST', '127.0.0.1') %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch('MYSQL_DB', 'notifications_development') %>
+
+test:
+  <<: *default
+  database: notifications_test
+
+production:
+  <<: *default
+  database: <%= ENV.fetch('MYSQL_DB', 'notifications_production') %>
