@@ -27,7 +27,7 @@ class NotificationCreator < ApplicationService
       button_title: button_title,
       button_url: button_url,
       style: style || 0,
-      is_closable: is_closable.nil? ? true : is_closable
+      is_closable: is_closable.nil? || is_closable
     }
   end
 end

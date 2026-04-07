@@ -10,12 +10,14 @@ module JwtUser
   let(:invalid_token) { 'my_invalid_token' }
 
   before do
-    allow(AuthService).to receive(:authenticate).with(valid_token)
-      .and_return(AuthService::Result.new(success: true, user: user, status: 200))
-    allow(AuthService).to receive(:authenticate).with(invalid_token)
-      .and_return(AuthService::Result.new(success: false, error: 'Access denied', status: 401))
-    allow(AuthService).to receive(:authenticate).with(nil)
-      .and_return(AuthService::Result.new(success: false, error: 'Unauthorized', status: 401))
+    valid_result   = AuthService::Result.new(success: true,  user: user, status: 200)
+    invalid_result = AuthService::Result.new(success: false, error: 'Access denied', status: 401)
+    unauth_result  = AuthService::Result.new(success: false, error: 'Unauthorized',  status: 401)
+
+    allow(AuthService).to receive(:authenticate).with(valid_token).and_return(valid_result)
+    allow(AuthService).to receive(:authenticate).with(invalid_token).and_return(invalid_result)
+    allow(AuthService).to receive(:authenticate).with(nil).and_return(unauth_result)
+
     request.env['HTTP_AUTHORIZATION'] = "Bearer #{valid_token}"
     request.env['HTTP_ACCEPT'] = 'application/json'
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AuthService
-  Result = Struct.new(:success, :user, :error, :status, keyword_init: true) do
+  Result = Struct.new(:success, :user, :error, :status) do
     def success? = success
   end
 

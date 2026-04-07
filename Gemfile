@@ -4,17 +4,17 @@ source 'https://rubygems.org'
 
 ruby '3.2.3'
 
-gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
-gem 'mysql2', '~> 0.5'
 gem 'blueprinter', '~> 0.25.3'
 gem 'bootsnap', require: false
 gem 'bunny', '~> 2.22'
 gem 'dotenv-rails'
 gem 'enumerize'
 gem 'jwt'
+gem 'mysql2', '~> 0.5'
 gem 'oj'
 gem 'puma', '>= 5.0'
 gem 'rack-cors', '1.0.6', require: 'rack/cors'
+gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 gem 'sentry-rails', '~> 5.5'
 
 group :rubocop do

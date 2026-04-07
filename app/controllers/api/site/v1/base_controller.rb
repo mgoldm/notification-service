@@ -42,7 +42,7 @@ module Api
         end
 
         def unprocessable_entity(message = 'Unprocessable')
-          render json: { error: message }, status: :unprocessable_entity
+          render json: { error: message }, status: :unprocessable_content
         end
 
         def cookie_api_token
