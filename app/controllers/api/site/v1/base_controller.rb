@@ -13,10 +13,6 @@ module Api
         before_action :authenticate
 
         rescue_from ActiveRecord::RecordNotFound, with: -> { not_found('Not Found') }
-        rescue_from ::HTTP::TimeoutError, with: lambda { |e|
-          Sentry.capture_exception(e)
-          render json: { error: true, message: 'Request timeout.' }, status: :request_timeout
-        }
 
         private
 
